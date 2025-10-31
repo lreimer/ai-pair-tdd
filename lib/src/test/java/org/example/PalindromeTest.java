@@ -1,6 +1,5 @@
 package org.example;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -8,52 +7,60 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PalindromeTest {
 
-    private Palindrome palindrome;
-
-    @BeforeEach
-    void setUp() {
-        palindrome = new Palindrome();
-    }
-
     @Test
     void shouldReturnTrueForAnna() {
-        assertTrue(palindrome.check("anna"));
+        assertTrue(Palindrome.check("anna"));
     }
 
     @Test
     void shouldReturnFalseForAbba() {
-        assertFalse(palindrome.check("Abba"));
+        assertFalse(Palindrome.check("Abba"));
     }
 
     @Test
     void shouldReturnTrueForAba() {
-        assertTrue(palindrome.check("aba"));
+        assertTrue(Palindrome.check("aba"));
     }
 
     @Test
     void shouldReturnTrueForSingleCharacterA() {
-        assertTrue(palindrome.check("A"));
+        assertTrue(Palindrome.check("A"));
+    }
+
+    @Test
+    void shouldReturnTrueForSingleCharacterLowercase() {
+        assertTrue(Palindrome.check("a"));
+    }
+
+    @Test
+    void shouldReturnTrueForTwoCharacterPalindrome() {
+        assertTrue(Palindrome.check("aa"));
+    }
+
+    @Test
+    void shouldReturnFalseForTwoCharacterNonPalindrome() {
+        assertFalse(Palindrome.check("ab"));
     }
 
     @Test
     void shouldReturnFalseForNull() {
-        assertFalse(palindrome.check(null));
+        assertFalse(Palindrome.check(null));
     }
 
     @Test
     void shouldReturnTrueForEmptyString() {
-        assertTrue(palindrome.check(""));
+        assertTrue(Palindrome.check(""));
     }
 
     @Test
     void shouldReturnTrueForLongPalindrome() {
         String longPalindrome = "a".repeat(10000) + "b" + "a".repeat(10000);
-        assertTrue(palindrome.check(longPalindrome));
+        assertTrue(Palindrome.check(longPalindrome));
     }
 
     @Test
     void shouldReturnFalseForLongNonPalindrome() {
         String longNonPalindrome = "a".repeat(10000) + "bc" + "a".repeat(10000);
-        assertFalse(palindrome.check(longNonPalindrome));
+        assertFalse(Palindrome.check(longNonPalindrome));
     }
 }

@@ -6,6 +6,10 @@ package org.example;
  */
 public class Palindrome {
 
+    private Palindrome() {
+        throw new UnsupportedOperationException("Utility class");
+    }
+
     /**
      * Checks if the given string is a palindrome.
      * The check is case-sensitive.
@@ -14,19 +18,15 @@ public class Palindrome {
      * @return {@code true} if the input is a palindrome, {@code false} otherwise
      *         (including null inputs)
      */
-    public boolean check(String input) {
-        if (isInvalid(input)) {
+    public static boolean check(String input) {
+        if (input == null) {
             return false;
         }
         
         return isPalindromeUsingTwoPointers(input);
     }
 
-    private boolean isInvalid(String input) {
-        return input == null;
-    }
-
-    private boolean isPalindromeUsingTwoPointers(String input) {
+    private static boolean isPalindromeUsingTwoPointers(String input) {
         int left = 0;
         int right = input.length() - 1;
         
