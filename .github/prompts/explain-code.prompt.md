@@ -1,5 +1,5 @@
 ---
-mode: 'agent'
+agent: 'ask'
 description: 'Generate a clear code explanation with examples'
 ---
 
