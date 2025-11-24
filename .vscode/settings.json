@@ -16,5 +16,7 @@
         "**/.git/**": false
     },
     "chat.agent.enabled": true,
-    "chat.agent.maxRequests": 50
+    "chat.agent.maxRequests": 50,
+    "chat.checkpoints.enabled": true,
+    "chat.checkpoints.showFileChanges": true
 }
