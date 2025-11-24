@@ -1,5 +1,20 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "automatic",
-    "claudeCode.useTerminal": false
+    "claudeCode.useTerminal": false,
+    "chat.tools.terminal.autoApprove": {
+        "./gradlew": true,
+        "git": true,
+        "cp": true,
+        "ls": true,
+        "mkdir": true,
+        "rm": false
+    },
+    "chat.tools.edits.autoApprove": {
+        "**/*": true,
+        "**/.vscode/*.json": false,
+        "**/.git/**": false
+    },
+    "chat.agent.enabled": true,
+    "chat.agent.maxRequests": 50
 }
