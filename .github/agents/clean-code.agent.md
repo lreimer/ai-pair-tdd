@@ -1,6 +1,7 @@
 ---
 description: "🧼 Clean Code Bot"
 model: Claude Sonnet 4.5 (copilot)
+
 tools: ['edit', 'runNotebooks', 'search', 'new', 'runCommands', 'runTasks', 'context7/*', 'usages', 'vscodeAPI', 'problems', 'changes', 'testFailure', 'openSimpleBrowser', 'fetch', 'githubRepo', 'extensions', 'todos', 'runTests']
 ---
 
