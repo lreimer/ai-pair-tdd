@@ -1,8 +1,5 @@
 plugins {
     id 'java-library'
-
-    id "jacoco"
-    id "org.sonarqube" version "7.1.0.6387"
 }
 
 repositories {
@@ -36,11 +33,4 @@ tasks.named('test') {
     testLogging {
         events "passed", "skipped", "failed"
     }
-}
-
-sonar {
-  properties {
-    property "sonar.projectKey", "lreimer_ai-pair-tdd"
-    property "sonar.organization", "lreimer"
-  }
 }

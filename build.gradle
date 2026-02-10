@@ -1,0 +1,14 @@
+plugins {
+    id "org.sonarqube" version "7.1.0.6387"
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "lreimer_ai-pair-tdd"
+    property "sonar.organization", "lreimer"
+  }
+}
+
+subprojects {
+    apply plugin: "jacoco"
+}
