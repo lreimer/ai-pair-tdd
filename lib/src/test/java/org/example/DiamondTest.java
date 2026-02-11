@@ -16,4 +16,22 @@ class DiamondTest {
     void shouldReturnAForInputA() {
         assertEquals("A", diamond.print('A'));
     }
+
+    @Test
+    void shouldReturnDiamondForInputB() {
+        String expected = " A\n" +
+                          "B B\n" +
+                          " A";
+        assertEquals(expected, diamond.print('B'));
+    }
+
+    @Test
+    void shouldReturnDiamondForInputC() {
+        String expected = "  A\n" +
+                          " B B\n" +
+                          "C   C\n" +
+                          " B B\n" +
+                          "  A";
+        assertEquals(expected, diamond.print('C'));
+    }
 }
