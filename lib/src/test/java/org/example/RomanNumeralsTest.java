@@ -71,4 +71,19 @@ class RomanNumeralsTest {
     void shouldThrowExceptionForNumberGreaterThan3999() {
         assertThrows(IllegalArgumentException.class, () -> romanNumerals.convert(4000));
     }
+
+    @Test
+    void shouldReturnMMMCMXCIXForInput3999() {
+        assertEquals("MMMCMXCIX", romanNumerals.convert(3999));
+    }
+
+    @Test
+    void shouldReturnIIIForInput3() {
+        assertEquals("III", romanNumerals.convert(3));
+    }
+
+    @Test
+    void shouldReturnVIIIForInput8() {
+        assertEquals("VIII", romanNumerals.convert(8));
+    }
 }
