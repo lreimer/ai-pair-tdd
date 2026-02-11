@@ -3,11 +3,17 @@ package org.example;
 public class Diamond {
 
     public String print(char c) {
-        if (c == 'A') {
+        char upperChar = Character.toUpperCase(c);
+        
+        if (!Character.isLetter(upperChar) || upperChar < 'A' || upperChar > 'Z') {
+            throw new IllegalArgumentException("Input must be a letter from A to Z");
+        }
+        
+        if (upperChar == 'A') {
             return "A";
         }
         
-        int size = c - 'A';
+        int size = upperChar - 'A';
         StringBuilder result = new StringBuilder();
         
         // Top half including middle
