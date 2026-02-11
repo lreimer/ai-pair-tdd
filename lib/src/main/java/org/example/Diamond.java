@@ -3,6 +3,7 @@ package org.example;
 public class Diamond {
 
     private static final char FIRST_LETTER = 'A';
+    private static final char LAST_LETTER = 'Z';
 
     public String print(char c) {
         char letter = normalizeAndValidate(c);
@@ -17,7 +18,7 @@ public class Diamond {
     private char normalizeAndValidate(char c) {
         char upperChar = Character.toUpperCase(c);
         
-        if (!Character.isLetter(upperChar) || upperChar < FIRST_LETTER || upperChar > 'Z') {
+        if (!Character.isLetter(upperChar) || upperChar < FIRST_LETTER || upperChar > LAST_LETTER) {
             throw new IllegalArgumentException("Input must be a letter from A to Z");
         }
         
