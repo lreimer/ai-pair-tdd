@@ -2,58 +2,76 @@ package org.example;
 
 public class Diamond {
 
+    private static final char FIRST_LETTER = 'A';
+
     public String print(char c) {
+        char letter = normalizeAndValidate(c);
+        
+        if (letter == FIRST_LETTER) {
+            return String.valueOf(FIRST_LETTER);
+        }
+        
+        return buildDiamond(letter);
+    }
+    
+    private char normalizeAndValidate(char c) {
         char upperChar = Character.toUpperCase(c);
         
-        if (!Character.isLetter(upperChar) || upperChar < 'A' || upperChar > 'Z') {
+        if (!Character.isLetter(upperChar) || upperChar < FIRST_LETTER || upperChar > 'Z') {
             throw new IllegalArgumentException("Input must be a letter from A to Z");
         }
         
-        if (upperChar == 'A') {
-            return "A";
-        }
-        
-        int size = upperChar - 'A';
+        return upperChar;
+    }
+    
+    private String buildDiamond(char letter) {
+        int size = letter - FIRST_LETTER;
         StringBuilder result = new StringBuilder();
         
-        // Top half including middle
+        buildTopHalf(result, size);
+        buildBottomHalf(result, size);
+        
+        return result.toString();
+    }
+    
+    private void buildTopHalf(StringBuilder result, int size) {
         for (int i = 0; i <= size; i++) {
             result.append(createLine(i, size));
             if (i < size) {
                 result.append("\n");
             }
         }
-        
-        // Bottom half
+    }
+    
+    private void buildBottomHalf(StringBuilder result, int size) {
         for (int i = size - 1; i >= 0; i--) {
             result.append("\n");
             result.append(createLine(i, size));
         }
-        
-        return result.toString();
     }
     
     private String createLine(int index, int size) {
-        char letter = (char) ('A' + index);
+        char letter = (char) (FIRST_LETTER + index);
         int outerSpaces = size - index;
         int innerSpaces = 2 * index - 1;
         
         StringBuilder line = new StringBuilder();
         
-        for (int i = 0; i < outerSpaces; i++) {
-            line.append(' ');
-        }
-        
+        appendSpaces(line, outerSpaces);
         line.append(letter);
         
         if (index > 0) {
-            for (int i = 0; i < innerSpaces; i++) {
-                line.append(' ');
-            }
+            appendSpaces(line, innerSpaces);
             line.append(letter);
         }
         
         return line.toString();
+    }
+    
+    private void appendSpaces(StringBuilder builder, int count) {
+        for (int i = 0; i < count; i++) {
+            builder.append(' ');
+        }
     }
 }
 
