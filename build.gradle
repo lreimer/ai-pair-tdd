@@ -8,7 +8,3 @@ sonar {
     property "sonar.organization", "lreimer"
   }
 }
-
-subprojects {
-    apply plugin: "jacoco"
-}
