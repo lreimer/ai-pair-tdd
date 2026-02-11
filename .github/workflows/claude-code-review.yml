@@ -3,8 +3,12 @@ name: Claude Code Review
 on:
   pull_request:
     types: [opened, synchronize]
-    paths:
-     - "lib/**/*"
+    # Optional: Only run on specific file changes
+    # paths:
+    #   - "src/**/*.ts"
+    #   - "src/**/*.tsx"
+    #   - "src/**/*.js"
+    #   - "src/**/*.jsx"
 
 jobs:
   claude-review:
@@ -16,9 +20,9 @@ jobs:
 
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
-      issues: write
+      contents: read
+      pull-requests: read
+      issues: read
       id-token: write
 
     steps:
