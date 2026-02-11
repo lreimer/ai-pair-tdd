@@ -2,6 +2,9 @@ package org.example;
 
 public class GameOfLife {
 
+    private static final int DEAD = 0;
+    private static final int ALIVE = 1;
+
     public int[][] nextGeneration(int[][] grid) {
         if (grid.length == 0) {
             return new int[0][0];
@@ -14,25 +17,31 @@ public class GameOfLife {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
                 int liveNeighbors = countLiveNeighbors(grid, row, col);
-                int currentCell = grid[row][col];
-                
-                if (currentCell == 1) {
-                    if (liveNeighbors == 2 || liveNeighbors == 3) {
-                        newGrid[row][col] = 1;
-                    } else {
-                        newGrid[row][col] = 0;
-                    }
-                } else {
-                    if (liveNeighbors == 3) {
-                        newGrid[row][col] = 1;
-                    } else {
-                        newGrid[row][col] = 0;
-                    }
-                }
+                newGrid[row][col] = getNextCellState(grid[row][col], liveNeighbors);
             }
         }
         
         return newGrid;
+    }
+    
+    private int getNextCellState(int currentCell, int liveNeighbors) {
+        if (isAlive(currentCell)) {
+            return survives(liveNeighbors) ? ALIVE : DEAD;
+        } else {
+            return becomesAlive(liveNeighbors) ? ALIVE : DEAD;
+        }
+    }
+    
+    private boolean isAlive(int cell) {
+        return cell == ALIVE;
+    }
+    
+    private boolean survives(int liveNeighbors) {
+        return liveNeighbors == 2 || liveNeighbors == 3;
+    }
+    
+    private boolean becomesAlive(int liveNeighbors) {
+        return liveNeighbors == 3;
     }
     
     private int countLiveNeighbors(int[][] grid, int row, int col) {
@@ -46,15 +55,19 @@ public class GameOfLife {
                     continue;
                 }
                 
-                int newRow = row + i;
-                int newCol = col + j;
+                int neighborRow = row + i;
+                int neighborCol = col + j;
                 
-                if (newRow >= 0 && newRow < rows && newCol >= 0 && newCol < cols) {
-                    count += grid[newRow][newCol];
+                if (isWithinBounds(neighborRow, neighborCol, rows, cols)) {
+                    count += grid[neighborRow][neighborCol];
                 }
             }
         }
         
         return count;
+    }
+    
+    private boolean isWithinBounds(int row, int col, int rows, int cols) {
+        return row >= 0 && row < rows && col >= 0 && col < cols;
     }
 }
