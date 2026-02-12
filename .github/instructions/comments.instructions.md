@@ -1,6 +1,6 @@
 ---
 description: 'Guidelines for GitHub Copilot to write comments to achieve self-explanatory code with less comments. Examples are in JavaScript but it should work on any language that has comments.'
-applyTo: '**/*.js, **/*.ts, **/*.java, **/*.py, **/*.go'
+applyTo: '**/*.java'
 ---
 
 # Self-explanatory Code Commenting Instructions
@@ -8,6 +8,7 @@ applyTo: '**/*.js, **/*.ts, **/*.java, **/*.py, **/*.go'
 ## Core Principle
 **Write code that speaks for itself. Comment only when necessary to explain WHY, not WHAT.**
 We do not need comments most of the time.
+Public API should be well-documented, but internal code should be self-explanatory through good naming and structure. Comments should add value by explaining intent, rationale, or non-obvious details.
 
 ## Commenting Guidelines
 
