@@ -61,4 +61,36 @@ public class SieveOfEratosthenes {
 
         return primes;
     }
+
+    /**
+     * Demonstrates the usage of the Sieve of Eratosthenes algorithm.
+     * Prints prime numbers up to 100 to standard output.
+     *
+     * @param args command line arguments (not used)
+     */
+    public static void main(String[] args) {
+        SieveOfEratosthenes sieve = new SieveOfEratosthenes();
+        
+        System.out.println("=== Sieve of Eratosthenes Demo ===\n");
+        
+        // Example 1: Find primes up to 30
+        int limit1 = 30;
+        List<Integer> primes1 = sieve.findPrimes(limit1);
+        System.out.println("Prime numbers up to " + limit1 + ":");
+        System.out.println(primes1);
+        System.out.println("Count: " + primes1.size() + "\n");
+        
+        // Example 2: Find primes up to 100
+        int limit2 = 100;
+        List<Integer> primes2 = sieve.findPrimes(limit2);
+        System.out.println("Prime numbers up to " + limit2 + ":");
+        System.out.println(primes2);
+        System.out.println("Count: " + primes2.size() + "\n");
+        
+        // Example 3: Edge case - small numbers
+        System.out.println("Edge cases:");
+        System.out.println("Primes up to 0: " + sieve.findPrimes(0));
+        System.out.println("Primes up to 1: " + sieve.findPrimes(1));
+        System.out.println("Primes up to 2: " + sieve.findPrimes(2));
+    }
 }

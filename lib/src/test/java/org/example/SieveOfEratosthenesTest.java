@@ -85,4 +85,28 @@ class SieveOfEratosthenesTest {
         assertEquals(2, result.get(0)); // First prime should be 2
         assertEquals(997, result.get(result.size() - 1)); // Last prime up to 1000 is 997
     }
+
+    @Test
+    @DisplayName("Example usage demonstration")
+    void exampleUsageDemonstration() {
+        // This test demonstrates typical usage patterns of the Sieve of Eratosthenes
+        SieveOfEratosthenes sieve = new SieveOfEratosthenes();
+        
+        // Find all primes up to 50
+        List<Integer> primes = sieve.findPrimes(50);
+        
+        // Verify the results contain expected primes
+        assertTrue(primes.contains(2));
+        assertTrue(primes.contains(3));
+        assertTrue(primes.contains(47));
+        
+        // Verify non-primes are not included
+        assertFalse(primes.contains(4));
+        assertFalse(primes.contains(50));
+        
+        // Display usage example (visible in test output)
+        System.out.println("=== Example Usage ===");
+        System.out.println("Finding primes up to 50: " + primes);
+        System.out.println("Total primes found: " + primes.size());
+    }
 }
