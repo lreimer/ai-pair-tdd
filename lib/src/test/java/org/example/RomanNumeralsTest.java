@@ -1,7 +1,11 @@
 package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RomanNumeralsTest {
@@ -12,93 +16,33 @@ class RomanNumeralsTest {
         romanNumerals = new RomanNumerals();
     }
 
-    @Test
-    void shouldConvert1ToI() {
-        assertEquals("I", romanNumerals.convert(1));
+    @ParameterizedTest
+    @DisplayName("Should convert decimal numbers to Roman numerals")
+    @CsvSource({
+        "1, I",
+        "2, II",
+        "3, III",
+        "4, IV",
+        "5, V",
+        "9, IX",
+        "10, X",
+        "42, XLII",
+        "50, L",
+        "99, XCIX",
+        "100, C",
+        "500, D",
+        "1000, M",
+        "2013, MMXIII",
+        "3999, MMMCMXCIX"
+    })
+    void shouldConvertDecimalToRomanNumerals(int decimal, String expected) {
+        assertEquals(expected, romanNumerals.convert(decimal));
     }
 
-    @Test
-    void shouldConvert2ToII() {
-        assertEquals("II", romanNumerals.convert(2));
-    }
-
-    @Test
-    void shouldConvert4ToIV() {
-        assertEquals("IV", romanNumerals.convert(4));
-    }
-
-    @Test
-    void shouldConvert5ToV() {
-        assertEquals("V", romanNumerals.convert(5));
-    }
-
-    @Test
-    void shouldConvert9ToIX() {
-        assertEquals("IX", romanNumerals.convert(9));
-    }
-
-    @Test
-    void shouldConvert10ToX() {
-        assertEquals("X", romanNumerals.convert(10));
-    }
-
-    @Test
-    void shouldConvert42ToXLII() {
-        assertEquals("XLII", romanNumerals.convert(42));
-    }
-
-    @Test
-    void shouldConvert99ToXCIX() {
-        assertEquals("XCIX", romanNumerals.convert(99));
-    }
-
-    @Test
-    void shouldConvert2013ToMMXIII() {
-        assertEquals("MMXIII", romanNumerals.convert(2013));
-    }
-
-    @Test
-    void shouldConvert3ToIII() {
-        assertEquals("III", romanNumerals.convert(3));
-    }
-
-    @Test
-    void shouldConvert50ToL() {
-        assertEquals("L", romanNumerals.convert(50));
-    }
-
-    @Test
-    void shouldConvert100ToC() {
-        assertEquals("C", romanNumerals.convert(100));
-    }
-
-    @Test
-    void shouldConvert500ToD() {
-        assertEquals("D", romanNumerals.convert(500));
-    }
-
-    @Test
-    void shouldConvert1000ToM() {
-        assertEquals("M", romanNumerals.convert(1000));
-    }
-
-    @Test
-    void shouldConvert3999ToMMMCMXCIX() {
-        assertEquals("MMMCMXCIX", romanNumerals.convert(3999));
-    }
-
-    @Test
-    void shouldThrowExceptionForZero() {
-        assertThrows(IllegalArgumentException.class, () -> romanNumerals.convert(0));
-    }
-
-    @Test
-    void shouldThrowExceptionForNegativeNumber() {
-        assertThrows(IllegalArgumentException.class, () -> romanNumerals.convert(-1));
-    }
-
-    @Test
-    void shouldThrowExceptionForNumberGreaterThan3999() {
-        assertThrows(IllegalArgumentException.class, () -> romanNumerals.convert(4000));
+    @ParameterizedTest
+    @DisplayName("Should throw exception for invalid input")
+    @ValueSource(ints = {0, -1, -100, 4000, 5000})
+    void shouldThrowExceptionForInvalidInput(int invalidNumber) {
+        assertThrows(IllegalArgumentException.class, () -> romanNumerals.convert(invalidNumber));
     }
 }
