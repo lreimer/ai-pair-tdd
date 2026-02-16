@@ -1,6 +1,6 @@
 ---
 agent: 'ai-pair-tdd'
-tools: ['github/get_label', 'github/get_me', 'github/issue_read', 'github/list_issues', 'github/search_issues', 'githubRepo']
+tools: ['github/get_label', 'github/get_me', 'github/issue_read', 'github/list_issues', 'github/search_issues', 'web/githubRepo']
 description: 'List my Github issues in the current repository'
 ---
 
