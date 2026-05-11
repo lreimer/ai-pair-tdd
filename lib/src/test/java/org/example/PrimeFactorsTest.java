@@ -7,8 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -27,7 +25,7 @@ class PrimeFactorsTest {
     @Test
     @DisplayName("Should return an empty list for 1")
     void shouldReturnEmptyListForOne() {
-        assertEquals(Collections.emptyList(), primeFactors.generate(1));
+        assertEquals(List.of(), primeFactors.generate(1));
     }
 
     @ParameterizedTest
@@ -81,7 +79,7 @@ class PrimeFactorsTest {
     @DisplayName("Should factorize a large highly composite number")
     void shouldFactorizeLargeHighlyCompositeNumber() {
         // 2^10 * 3^5 = 1024 * 243 = 248_832
-        List<Integer> expected = Arrays.asList(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3);
+        List<Integer> expected = List.of(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3);
         assertEquals(expected, primeFactors.generate(248_832));
     }
 }
