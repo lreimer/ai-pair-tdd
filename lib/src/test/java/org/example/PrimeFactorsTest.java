@@ -2,6 +2,7 @@ package org.example;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -77,7 +78,7 @@ class PrimeFactorsTest {
         assertThrows(IllegalArgumentException.class, () -> primeFactors.generate(invalid));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     @DisplayName("Should factorize a large highly composite number")
     void shouldFactorizeLargeHighlyCompositeNumber() {
         // 2^10 * 3^5 = 1024 * 243 = 248_832
