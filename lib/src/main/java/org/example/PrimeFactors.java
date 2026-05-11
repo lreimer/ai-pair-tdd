@@ -13,6 +13,10 @@ import java.util.List;
  *
  * <p>By convention, the prime factorization of {@code 1} is the empty list,
  * since {@code 1} has no prime factors.
+ *
+ * <p>The implementation uses straightforward trial division, kept intentionally
+ * naive to match the spirit of the kata. As a consequence, the worst-case
+ * runtime is {@code O(n)} for inputs that are themselves large primes.
  */
 public class PrimeFactors {
 

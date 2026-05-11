@@ -24,11 +24,10 @@ class PrimeFactorsTest {
         primeFactors = new PrimeFactors();
     }
 
-    @ParameterizedTest
+    @Test
     @DisplayName("Should return an empty list for 1")
-    @ValueSource(ints = {1})
-    void shouldReturnEmptyListForOne(int number) {
-        assertEquals(Collections.emptyList(), primeFactors.generate(number));
+    void shouldReturnEmptyListForOne() {
+        assertEquals(Collections.emptyList(), primeFactors.generate(1));
     }
 
     @ParameterizedTest
